@@ -26,6 +26,11 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+out
+src/generated
+test-output
+test-output-tests
+/*/allure-results/
 
 
 ##############################
