@@ -13,7 +13,7 @@ public class Password {
 	}
 	
 	@JsonProperty("password")
-	public void String(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 }

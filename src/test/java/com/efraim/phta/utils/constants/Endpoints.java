@@ -1,4 +1,4 @@
-package com.efraim.phta.constants;
+package com.efraim.phta.utils.constants;
 
 public class Endpoints {
 	
