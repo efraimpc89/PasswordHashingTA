@@ -3,7 +3,6 @@ package com.efraim.phta.helpers;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
 import java.util.ResourceBundle;
 
 public class BaseServiceHelper {
@@ -13,7 +12,7 @@ public class BaseServiceHelper {
         RestAssured.baseURI = rb.getString("BASE_URI");
     }
 
-    public static Response postRequest(ContentType contentType, Object body, String path) {
+    public Response postRequest(ContentType contentType, Object body, String path) {
         Response response =
                 RestAssured.given()
                         .contentType(contentType)
@@ -22,7 +21,7 @@ public class BaseServiceHelper {
         return response;
     }
 
-    public static Response getRequest(ContentType contentType, String path) {
+    public Response getRequest(ContentType contentType, String path) {
         Response response =
                 RestAssured.given()
                         .contentType(contentType)

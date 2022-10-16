@@ -3,6 +3,7 @@ package com.efraim.phta.tests;
 import com.efraim.phta.utils.constants.Constants;
 import com.efraim.phta.helpers.HashServiceHelper;
 import com.efraim.phta.utils.exceptions.TestPrerequisiteException;
+import com.efraim.phta.utils.other.TestCaseInformation.TestCaseInfo;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
@@ -21,12 +22,14 @@ public class GET_Hash_Test {
 	}
 
 	@Test(groups = { "GET", "Hash" })
+	@TestCaseInfo(testCaseId = {"C1"})
 	public void getEncodedPasswordIs200() {
 		Response response = helper.getEncodedPasswordById(Constants.HASH_ID_1);
 		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK);
 	}
 
 	@Test(groups = { "GET", "Hash" })
+	@TestCaseInfo(testCaseId = {"C1"})
 	public void getNonExistentEncodedPasswordIs404() {
 		Response response = helper.getEncodedPasswordById(Constants.NON_EXISTENT_HASH_ID);
 		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_NOT_FOUND);
