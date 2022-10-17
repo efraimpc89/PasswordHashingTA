@@ -1,4 +1,4 @@
-package com.efraim.phta.tests;
+package com.efraim.phta.tests.stats;
 
 import com.efraim.phta.helpers.HashServiceHelper;
 import com.efraim.phta.helpers.StatsServiceHelper;
@@ -6,7 +6,6 @@ import com.efraim.phta.models.Stats;
 import com.efraim.phta.utils.constants.Constants;
 import com.efraim.phta.utils.exceptions.TestPrerequisiteException;
 import com.efraim.phta.utils.other.TestCaseInformation.TestCaseInfo;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
@@ -72,7 +71,7 @@ public class GET_Stats {
 
 
     private void ensurePasswordHashExists() throws TestPrerequisiteException {
-        if( hashHelper.getHash_EncodedPasswordById(Constants.HASH_ID_1).getStatusCode()!= HttpStatus.SC_OK){
+        if( hashHelper.getHash_ById(Constants.HASH_ID_1).getStatusCode()!= HttpStatus.SC_OK){
             Response response = hashHelper.postHash_NewPassword(Constants.DEFAULT_PASSWORD);
             if(response.getStatusCode() != HttpStatus.SC_OK){
                 throw new TestPrerequisiteException(Constants.NEW_PASSWORD_HASHING_PREREQUISITE_EXCEPTION_MSG);

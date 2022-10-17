@@ -25,12 +25,33 @@ public class HashServiceHelper extends BaseServiceHelper{
 
 	}
 
-	public Response getHash_EncodedPasswordById(int passwordId) {
+	public Response getHash_ById(int jobId) {
 		
-		String path = String.format(Endpoints.HASH_ID, passwordId);
+		String path = String.format(Endpoints.HASH_ID, jobId);
 
 		Response response = getRequest(ContentType.JSON, path);
 		
+		return response;
+	}
+
+	public Response getHash() {
+
+		Response response = getRequest(ContentType.JSON, Endpoints.HASH);
+
+		return response;
+	}
+
+	public Response putHash() {
+
+		Response response = putRequest(ContentType.JSON, Endpoints.HASH);
+
+		return response;
+	}
+
+	public Response deleteHash() {
+
+		Response response = deleteRequest(ContentType.JSON, Endpoints.HASH);
+
 		return response;
 	}
 

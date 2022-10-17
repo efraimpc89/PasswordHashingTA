@@ -6,7 +6,8 @@ public class Constants {
     public static final String DEFAULT_PASSWORD = "test";
     public static final int HASH_ID_1 = 1;
     public static final int NON_EXISTENT_HASH_ID = 0;
-    public static final String EMPTY_BODY = "";
+    public static final String EMPTY = "";
+    public static final String BLANK = " ";
     public static final String SHUTDOWN = "shutdown";
     //endregion
 

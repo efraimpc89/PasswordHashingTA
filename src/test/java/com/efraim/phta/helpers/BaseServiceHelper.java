@@ -34,4 +34,20 @@ public class BaseServiceHelper {
         return response;
     }
 
+    public Response putRequest(ContentType contentType, String path) {
+        Response response =
+                RestAssured.given()
+                        .contentType(contentType)
+                        .put(path);
+        return response;
+    }
+
+    public Response deleteRequest(ContentType contentType, String path) {
+        Response response =
+                RestAssured.given()
+                        .contentType(contentType)
+                        .delete(path);
+        return response;
+    }
+
 }
