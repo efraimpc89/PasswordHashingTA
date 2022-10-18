@@ -1,13 +1,23 @@
 
 # Password Hashing API
-The purpose of this repository is to test the requirements described in JumpCloud's QA Assigment.
+The purpose of this repository is to test the Password Hashing API following the requirements described in JumpCloud's QA Assigment.
 ### Assumptions
 
-- The assigment contains raw requirements and are not meant to be final but converted into formal requirements at some point, meaning they might contain inconsistencies/typos.
-- PasswordHashing API can be executed locally but it will get deployed to QA and Prod environments eventually.
+- The assignment contains raw requirements and are not meant to be final, meaning they might contain inconsistencies/typos.
+- PasswordHashing API can be executed locally, but it would get deployed to QA and Prod environments eventually.
 - The API should follow the best practices and those would be considered as if they were requirements.
 - API has intentional bugs that might hide other bugs.
 - Test Automation might not contain all the test cases.
+
+### Testing Sequence
+- Requirement Analysis.
+- Local Environment Setup.
+- Exploratory testing.
+- Test Case Creation.
+- Manual Test Case Execution in Postman.
+- Test Run Reporting.
+- Defect Reporting.
+- Test Automation Demo.
 
 ## Test Cases
 The test case repository is on [test rails](https://efraimpc.testrail.io/), but here is a quick list all of them:
