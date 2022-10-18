@@ -192,4 +192,3 @@ Open Git bash and clone github repository:
 
 If you have any questions, feel free to send me an email:
 efraimpc89@gmail.com
-
