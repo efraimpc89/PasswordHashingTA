@@ -4,11 +4,13 @@ The purpose of this repository is to test the Password Hashing API following the
 ### Assumptions
 
 - The assignment contains raw requirements and are not meant to be final, meaning they might contain inconsistencies/typos.
+- More functionality would be added overtime.
 - PasswordHashing API can be executed locally, but it would get deployed to QA and Prod environments eventually.
 - The API should follow the best practices and those would be considered as if they were requirements.
 - API has intentional bugs that might hide other bugs.
 - There are more test cases but I might just create the enough to cover the requirements described on the assignment.
 - Test Automation might not contain all the test cases, it's a demo and might not be complete.
+- It is expected that Test Automation execution could fail or throw exceptions because of existing bugs.
 
 ### Testing Phases
 - Requirement Analysis.
