@@ -7,7 +7,7 @@ The purpose of this repository is to test the Password Hashing API following the
 - PasswordHashing API can be executed locally, but it would get deployed to QA and Prod environments eventually.
 - The API should follow the best practices and those would be considered as if they were requirements.
 - API has intentional bugs that might hide other bugs.
-- Test Automation might not contain all the test cases.
+- Test Automation might not contain all the test cases, it's a demo and might not be complete.
 
 ### Testing Sequence
 - Requirement Analysis.
