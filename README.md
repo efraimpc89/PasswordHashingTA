@@ -70,7 +70,6 @@ The test run results are a combination of manual and automated testing.
 
 A **complete Test Run Execution with comments** can be found [here](https://docs.google.com/spreadsheets/d/17XBc9m2efwak6BuZV7IKYuuZPa3Loka5/edit?usp=sharing&ouid=111040932277366908344&rtpof=true&sd=true).
 
-A detailed **Defect Report** can be found [here](https://docs.google.com/document/d/19OBAUYfhCkfAIS36N820D-0A5axtAvnVSo3AW-hVibY/edit?usp=sharing).
 ### Test Run Summary - 10/17/2022
 
 ```
@@ -113,8 +112,28 @@ A detailed **Defect Report** can be found [here](https://docs.google.com/documen
 | [C20](https://efraimpc.testrail.io/index.php?/cases/view/20) | [PUT to /stats returns 405 status code](https://efraimpc.testrail.io/index.php?/tests/view/21)                                   | Failed |
 | [C21](https://efraimpc.testrail.io/index.php?/cases/view/21) | [DELETE to /stats returns 405 status code](https://efraimpc.testrail.io/index.php?/tests/view/22)                                | Failed |
 
+### Defects Summary
+A detailed **Defect Report** can be found [here](https://docs.google.com/document/d/19OBAUYfhCkfAIS36N820D-0A5axtAvnVSo3AW-hVibY/edit?usp=sharing).
 
-## Test Automation Project Structure
+| Defect ID | Title                                                                                         | Severity | Related Test Cases |
+| --------- | --------------------------------------------------------------------------------------------- | -------- | ------------------ |
+| 1         | POST /hash - Request password hashing’s job id returns a 200 status code                      | 4        | C2, C5             |
+| 2         | GET /hash/{id} - Trying to decode the 64base encoded password hash returns a malformed string | 2        | C10                |
+| 3         | GET /stats - Response contains plain text as Content-Type but is displaying a valid JSON.     | 4        | C12                |
+| 4         | GET /stats - Response’s AverageTime is not updating even after several requests               | 4        | C14                |
+| 5         | POST /hash - Creates password hash allows blank and empty passwords                           | 3        | C22, C23           |
+| 6         | GET /hash/{id} - Non-existent resource returns 400 status code                                | 4        | C15                |
+| 7         | GET /stats - Allows other methods than GET                                                    | 4        | C19, C20, C21      |
+
+| Severity | Description                                                           |
+| -------- | --------------------------------------------------------------------- |
+| 1        | Critical Impact/System Down. Causes complete system outage.           |
+| 2        | Highly impacts/blocks the usage or performance of the software.       |
+| 3        | Affects the usage of the software but there is a workaround it.       |
+| 4        | Low Impact, does not affect the usage or performance of the software. |
+| 5        | Cosmetic bug                                                          |
+
+# Test Automation Project Structure
 
 The project it's following the Service Object design pattern and its following a four package structure to make the code easy to understand and as reusable as possible.
 
