@@ -9,7 +9,7 @@ The purpose of this repository is to test the Password Hashing API following the
 - API has intentional bugs that might hide other bugs.
 - Test Automation might not contain all the test cases, it's a demo and might not be complete.
 
-### Testing Sequence
+### Testing Phases
 - Requirement Analysis.
 - Local Environment Setup.
 - Exploratory testing.
