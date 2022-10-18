@@ -22,9 +22,10 @@ The purpose of this repository is to test the Password Hashing API following the
 
 ## Test Cases
 The test case repository is on [test rails](https://efraimpc.testrail.io/), but here is a quick list all of them:
-
+```
 Last updated: Oct/17/2022
 Total Test Cases: 23
+```
 | Section | ID  | Title                                                                    |
 | ------- | --- | ------------------------------------------------------------------------ |
 | Hash    | C1  | POST to /hash returns job identifier                                     |
