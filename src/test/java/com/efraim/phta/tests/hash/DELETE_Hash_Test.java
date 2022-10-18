@@ -16,7 +16,6 @@ public class DELETE_Hash_Test {
 	
 	@BeforeClass
 	public void initialize() throws IOException {
-
 		helper = new HashServiceHelper();
 	}
 

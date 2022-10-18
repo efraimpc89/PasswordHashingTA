@@ -21,7 +21,6 @@ public class GET_HashId_Test {
 	
 	@BeforeClass
 	public void initialize() throws TestPrerequisiteException, IOException {
-
 		helper = new HashServiceHelper();
 		ensurePasswordHashExists();
 	}
