@@ -26,10 +26,10 @@ import static com.efraim.phta.utils.other.OpenLocalHashServer.openAPIFile;
 public class POST_Hash_Test {
 
     //C5
-    private static final AtomicInteger creatingPasswordHashStatusCode = new AtomicInteger(0);
-    private static final AtomicInteger shutdownStatusCode = new AtomicInteger(0);
+    private AtomicInteger creatingPasswordHashStatusCode = new AtomicInteger(0);
+    private AtomicInteger shutdownStatusCode = new AtomicInteger(0);
     //C6
-    private static final AtomicReference<String> jobIdentifier_C6 = new AtomicReference<>("");
+    private AtomicReference<String> jobIdentifier_C6 = new AtomicReference<>("");
     private HashServiceHelper helper;
 
     @BeforeClass
