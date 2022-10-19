@@ -12,19 +12,19 @@ import java.io.IOException;
 
 public class PUT_Hash_Test {
 
-	private HashServiceHelper helper;
-	
-	@BeforeClass
-	public void initialize() throws IOException {
-		helper = new HashServiceHelper();
-	}
+    private HashServiceHelper helper;
 
-	@Test(groups = { "PUT", "Hash" })
-	@TestCaseInfo(testCaseId = {"C17"})
-	public void C17_PutHash_Returns405StatusCode() {
-		Response response = helper.putHash();
-		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_METHOD_NOT_ALLOWED);
-	}
+    @BeforeClass
+    public void initialize() throws IOException {
+        helper = new HashServiceHelper();
+    }
+
+    @Test(groups = {"PUT", "Hash"})
+    @TestCaseInfo(testCaseId = {"C17"})
+    public void C17_PutHash_Returns405StatusCode() {
+        Response response = helper.putHash();
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_METHOD_NOT_ALLOWED);
+    }
 
 
 }

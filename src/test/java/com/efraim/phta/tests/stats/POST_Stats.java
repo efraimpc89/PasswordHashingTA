@@ -21,7 +21,7 @@ public class POST_Stats {
         statsHelper = new StatsServiceHelper();
     }
 
-    @Test(groups = { "POST", "Stats" })
+    @Test(groups = {"POST", "Stats"})
     @TestCaseInfo(testCaseId = {"C19"})
     public void C20_PostStats_Returns405StatusCode() {
         Response response = statsHelper.postStats(Constants.EMPTY);

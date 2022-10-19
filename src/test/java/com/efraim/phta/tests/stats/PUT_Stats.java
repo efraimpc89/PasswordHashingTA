@@ -1,10 +1,6 @@
 package com.efraim.phta.tests.stats;
 
-import com.efraim.phta.helpers.HashServiceHelper;
 import com.efraim.phta.helpers.StatsServiceHelper;
-import com.efraim.phta.models.Stats;
-import com.efraim.phta.utils.constants.Constants;
-import com.efraim.phta.utils.exceptions.TestPrerequisiteException;
 import com.efraim.phta.utils.other.TestCaseInformation.TestCaseInfo;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
@@ -24,7 +20,7 @@ public class PUT_Stats {
         statsHelper = new StatsServiceHelper();
     }
 
-    @Test(groups = { "PUT", "Stats" })
+    @Test(groups = {"PUT", "Stats"})
     @TestCaseInfo(testCaseId = {"C19"})
     public void C19_PutStats_Returns405StatusCode() {
         Response response = statsHelper.putStats();

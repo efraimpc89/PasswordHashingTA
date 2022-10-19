@@ -20,7 +20,7 @@ public class DELETE_Stats {
         statsHelper = new StatsServiceHelper();
     }
 
-    @Test(groups = { "DELETE", "Stats" })
+    @Test(groups = {"DELETE", "Stats"})
     @TestCaseInfo(testCaseId = {"C19"})
     public void C21_DeleteStats_Returns405StatusCode() {
         Response response = statsHelper.deleteStats();

@@ -11,6 +11,7 @@ import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 
 
@@ -27,14 +28,14 @@ public class GET_Stats {
         ensurePasswordHashExists();
     }
 
-    @Test(groups = { "GET", "Stats" })
+    @Test(groups = {"GET", "Stats"})
     @TestCaseInfo(testCaseId = {"C11"})
     public void C11_GetStats_Returns200StatusCode() {
         Response response = statsHelper.getStats();
         Assert.assertEquals(response.statusCode(), HttpStatus.SC_OK);
     }
 
-    @Test(groups = { "GET", "Stats" })
+    @Test(groups = {"GET", "Stats"})
     @TestCaseInfo(testCaseId = {"C12"})
     public void C12_GetStats_ReturnsJSONContentTypeHeader() {
         Response response = statsHelper.getStats();
@@ -42,7 +43,7 @@ public class GET_Stats {
         Assert.assertTrue(contentTypeHeader.contains("application/json"), Constants.RESPONSE_CONTENT_TYPE_NOT_JSON_MSG + contentTypeHeader);
     }
 
-    @Test(groups = { "GET", "Stats" })
+    @Test(groups = {"GET", "Stats"})
     @TestCaseInfo(testCaseId = {"C13"})
     public void C13_GetStats_TotalRequestsIncrementBy1() throws TestPrerequisiteException {
         Response response = statsHelper.getStats();
@@ -55,34 +56,33 @@ public class GET_Stats {
         responseStats = response.getBody().as(Stats.class);
         int afterTotalRequests = responseStats.getTotalRequests();
 
-        Assert.assertTrue(afterTotalRequests == (beforeTotalRequests + 1), Constants.TOTALREQUESTS_DID_NOT_INCREMENT_BY1_MSG );
+        Assert.assertEquals((beforeTotalRequests + 1), afterTotalRequests, Constants.TOTALREQUESTS_DID_NOT_INCREMENT_BY1_MSG);
     }
 
-    @Test(groups = { "GET", "Stats" })
+    @Test(groups = {"GET", "Stats"})
     @TestCaseInfo(testCaseId = {"C14"})
     public void C14_GetStats_AverageTimeIsGreaterOrEqualTo5000ms() {
         Response response = statsHelper.getStats();
         Stats responseStats = response.getBody().as(Stats.class);
         int averageTime = responseStats.getAverageTime();
 
-        Assert.assertTrue(averageTime >= 5000, Constants.TOTALREQUESTS_DID_NOT_INCREMENT_BY1_MSG );
+        Assert.assertTrue(averageTime >= 5000, Constants.TOTALREQUESTS_DID_NOT_INCREMENT_BY1_MSG);
     }
 
 
-
     private void ensurePasswordHashExists() throws TestPrerequisiteException {
-        if( hashHelper.getHash_ById(Constants.HASH_ID_1).getStatusCode()!= HttpStatus.SC_OK){
+        if (hashHelper.getHash_ById(Constants.HASH_ID_1).getStatusCode() != HttpStatus.SC_OK) {
             Response response = hashHelper.postHash_NewPassword(Constants.DEFAULT_PASSWORD);
-            if(response.getStatusCode() != HttpStatus.SC_OK){
+            if (response.getStatusCode() != HttpStatus.SC_OK) {
                 throw new TestPrerequisiteException(Constants.NEW_PASSWORD_HASHING_PREREQUISITE_EXCEPTION_MSG);
             }
         }
     }
 
     private void createNewPasswordHash() throws TestPrerequisiteException {
-            Response response = hashHelper.postHash_NewPassword(Constants.DEFAULT_PASSWORD);
-            if(response.getStatusCode() != HttpStatus.SC_OK){
-                throw new TestPrerequisiteException(Constants.NEW_PASSWORD_HASHING_PREREQUISITE_EXCEPTION_MSG);
-            }
+        Response response = hashHelper.postHash_NewPassword(Constants.DEFAULT_PASSWORD);
+        if (response.getStatusCode() != HttpStatus.SC_OK) {
+            throw new TestPrerequisiteException(Constants.NEW_PASSWORD_HASHING_PREREQUISITE_EXCEPTION_MSG);
+        }
     }
 }
