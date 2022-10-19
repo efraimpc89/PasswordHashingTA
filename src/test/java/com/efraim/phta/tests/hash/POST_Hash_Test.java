@@ -21,16 +21,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
-import static com.efraim.phta.utils.other.OpenLocalHashServer.openAPIFile;
-
 public class POST_Hash_Test {
-
-    //C5
-    private AtomicInteger creatingPasswordHashStatusCode = new AtomicInteger(0);
-    private AtomicInteger shutdownStatusCode = new AtomicInteger(0);
-    //C6
-    private AtomicReference<String> jobIdentifier_C6 = new AtomicReference<>("");
     private HashServiceHelper helper;
+
+    private static void waitForAllRunnables(ExecutorService exec) {
+        exec.shutdown();
+        try {
+            if (!exec.awaitTermination(10, TimeUnit.SECONDS)) {
+                exec.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            exec.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+    }
 
     @BeforeClass
     public void initialize() throws IOException {
@@ -84,6 +88,8 @@ public class POST_Hash_Test {
     @Test(groups = {"POST", "Hash"})
     @TestCaseInfo(testCaseId = {"C5"})
     public void C5_PostToHash_WhenRequestSentBeforeShutdown_Returns201StatusCode() {
+        AtomicInteger creatingPasswordHashStatusCode = new AtomicInteger(0);
+        AtomicInteger shutdownStatusCode = new AtomicInteger(0);
         ExecutorService exec = Executors.newFixedThreadPool(2);
 
         Runnable passwordCreation = () -> {
@@ -111,12 +117,12 @@ public class POST_Hash_Test {
     @Test(groups = {"POST", "Hash"})
     @TestCaseInfo(testCaseId = {"C6"})
     public void C6_PostToHash_WhenRequestSentBeforeShutdown_ReturnsJobIdentifier() {
-
+        AtomicReference<String> jobIdentifier_C6 = new AtomicReference<>("");
         ExecutorService exec = Executors.newFixedThreadPool(2);
 
         Runnable passwordCreation = () -> {
             Response response = helper.postHash_NewPassword(Constants.DEFAULT_PASSWORD);
-            creatingPasswordHashStatusCode.set(response.getStatusCode());
+            jobIdentifier_C6.set(response.getBody().asString());
         };
 
         Runnable shutdownAPI = () -> {
@@ -125,8 +131,7 @@ public class POST_Hash_Test {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            Response response2 = helper.postHash_Shutdown();
-            jobIdentifier_C6.set(response2.getBody().asString());
+            helper.postHash_Shutdown();
         };
 
         exec.submit(passwordCreation);
@@ -152,18 +157,6 @@ public class POST_Hash_Test {
 
         Assert.assertTrue(connectionErrorFlag);
 
-    }
-
-    private static void waitForAllRunnables(ExecutorService exec) {
-        exec.shutdown();
-        try {
-            if (!exec.awaitTermination(10, TimeUnit.SECONDS)) {
-                exec.shutdownNow();
-            }
-        } catch (InterruptedException ex) {
-            exec.shutdownNow();
-            Thread.currentThread().interrupt();
-        }
     }
 
 }
